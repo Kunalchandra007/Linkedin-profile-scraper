@@ -15,13 +15,13 @@ from contextlib import contextmanager
 from contextvars import ContextVar
 from typing import Any
 
-_log_context: ContextVar[dict[str, Any]] = ContextVar("_log_context", default={})
+_log_context: ContextVar[dict[str, Any] | None] = ContextVar("_log_context", default=None)
 
 
 @contextmanager
 def log_context(**fields: Any):
     """Bind structured fields onto every log record emitted within the block."""
-    merged = {**_log_context.get(), **fields}
+    merged = {**(_log_context.get() or {}), **fields}
     token = _log_context.set(merged)
     try:
         yield
@@ -39,7 +39,7 @@ class JsonFormatter(logging.Formatter):
             "logger": record.name,
             "msg": record.getMessage(),
         }
-        payload.update(_log_context.get())
+        payload.update(_log_context.get() or {})
         # Fields passed explicitly via logger.info(..., extra={...})
         for key, value in record.__dict__.items():
             if key not in self._RESERVED and key not in payload and not key.startswith("_"):

@@ -11,14 +11,14 @@ by this script.
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from app.providers.mock import MockProfileProvider
 from app.urls import normalize_linkedin_url
 
 DEMO_SLUGS = ["demo-engineer", "demo-manager", "demo-scientist"]
-FIXED_TS = datetime(2024, 1, 1, tzinfo=timezone.utc)
+FIXED_TS = datetime(2024, 1, 1, tzinfo=UTC)
 OUT = Path("tests/fixtures/profiles")
 
 

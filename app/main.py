@@ -11,7 +11,7 @@ from __future__ import annotations
 import asyncio
 import time
 import uuid
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 
@@ -59,10 +59,8 @@ async def lifespan(app: FastAPI):
     finally:
         if worker_task is not None:
             worker_task.cancel()
-            try:
+            with suppress(asyncio.CancelledError):
                 await worker_task
-            except asyncio.CancelledError:
-                pass
         logger.info("app.stop")
 
 

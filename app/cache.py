@@ -7,7 +7,7 @@ trigger a re-scrape.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from app import db
 from app.config import get_settings
@@ -15,9 +15,9 @@ from app.schemas import ProfileResult
 
 
 def is_fresh(scraped_at: datetime, ttl_seconds: int, *, now: datetime | None = None) -> bool:
-    now = now or datetime.now(timezone.utc)
+    now = now or datetime.now(UTC)
     if scraped_at.tzinfo is None:
-        scraped_at = scraped_at.replace(tzinfo=timezone.utc)
+        scraped_at = scraped_at.replace(tzinfo=UTC)
     return (now - scraped_at) <= timedelta(seconds=ttl_seconds)
 
 

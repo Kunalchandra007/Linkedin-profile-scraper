@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from app.providers.base import ProfileNotFoundError
@@ -42,7 +42,7 @@ class FixtureProfileProvider:
             update={
                 "url": url,
                 "source": self.name,
-                "scraped_at": datetime.now(timezone.utc),
+                "scraped_at": datetime.now(UTC),
             }
         )
 

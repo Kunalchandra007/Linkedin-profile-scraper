@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import asyncio
 import random
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from app.config import Settings
 from app.linkedin_session import is_logged_in, new_context, storage_state_exists
@@ -120,7 +120,7 @@ class LinkedInProfileProvider:
                 return ProfileResult(
                     url=url,
                     source=self.name,
-                    scraped_at=datetime.now(timezone.utc),
+                    scraped_at=datetime.now(UTC),
                     profile=profile,
                     warnings=warnings,
                 )

@@ -15,7 +15,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import random
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from app.schemas import (
     Certification,
@@ -30,7 +30,10 @@ from app.schemas import (
 from app.urls import profile_slug
 
 _FIRST = ["Jordan", "Priya", "Wei", "Sofia", "Amir", "Nina", "Diego", "Aisha", "Lucas", "Mei"]
-_LAST = ["Okafor", "Sharma", "Nguyen", "Rossi", "Haddad", "Kowalski", "Silva", "Khan", "Andersen", "Chen"]
+_LAST = [
+    "Okafor", "Sharma", "Nguyen", "Rossi", "Haddad",
+    "Kowalski", "Silva", "Khan", "Andersen", "Chen",
+]
 _CITIES = [
     "San Francisco, California, United States",
     "London, England, United Kingdom",
@@ -39,7 +42,10 @@ _CITIES = [
     "Toronto, Ontario, Canada",
     "Singapore",
 ]
-_COMPANIES = ["Northwind", "Acme Cloud", "Globex", "Initech", "Umbrella Labs", "Hooli", "Stark Systems"]
+_COMPANIES = [
+    "Northwind", "Acme Cloud", "Globex", "Initech",
+    "Umbrella Labs", "Hooli", "Stark Systems",
+]
 _TITLES = [
     "Senior Software Engineer",
     "Staff Engineer",
@@ -146,7 +152,7 @@ class MockProfileProvider:
         return ProfileResult(
             url=url,
             source=self.name,
-            scraped_at=datetime.now(timezone.utc),
+            scraped_at=datetime.now(UTC),
             profile=_build_profile(slug),
             warnings=["Synthetic data from MockProfileProvider — not real LinkedIn data."],
         )
