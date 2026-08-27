@@ -10,6 +10,20 @@ on synthetic/fixture data, so the whole thing is testable, demoable, and deploya
 is included as an **optional, off-by-default** provider — see
 [Known Limitations / ToS](#known-limitations--tos) before you even think about enabling it.
 
+**Live demo:** <https://linkedin-profile-scraper-mv60.onrender.com> — running the safe `mock`
+provider. Try [`/health`](https://linkedin-profile-scraper-mv60.onrender.com/health), or the
+interactive API docs at [`/docs`](https://linkedin-profile-scraper-mv60.onrender.com/docs).
+*(A free-tier host may take a few seconds to wake on the first request.)*
+
+**Where the extraction ("reverse-engineering") lives:**
+[`app/providers/linkedin_parsers.py`](app/providers/linkedin_parsers.py) maps each profile
+section — top card, experience, education, skills, certifications, languages — onto the
+[response schema](#response-schema) as pure, browser-free `HTML → dict` functions, unit-tested
+offline in [`tests/test_parsers.py`](tests/test_parsers.py). That parsing layer is where a
+LinkedIn page's structure is decoded into this API's contract. The CSS selectors are
+illustrative and are the piece you adapt to LinkedIn's live, obfuscated DOM — see
+[Known Limitations / ToS](#known-limitations--tos).
+
 > **This is a portfolio / demonstration project, not a production scraping service.**
 > Scraping LinkedIn violates its User Agreement and carries a real risk of account
 > suspension. The default configuration deliberately does not touch LinkedIn.
@@ -158,7 +172,7 @@ engine at all.
 ### 1. Install
 
 ```bash
-git clone <your-repo-url> linkedin-profile-api
+git clone https://github.com/Kunalchandra007/Linkedin-profile-scraper.git linkedin-profile-api
 cd linkedin-profile-api
 python -m venv .venv
 # activate it:
@@ -429,7 +443,7 @@ The bundled [`docker-compose.yml`](docker-compose.yml) already wires up a persis
 volume, a health check, and `restart: unless-stopped`:
 
 ```bash
-git clone <your-repo-url> && cd linkedin-profile-api
+git clone https://github.com/Kunalchandra007/Linkedin-profile-scraper.git linkedin-profile-api && cd linkedin-profile-api
 printf 'API_KEY=%s\nPROVIDER=mock\n' "$(python -c 'import secrets;print(secrets.token_urlsafe(32))')" > .env
 docker compose up -d --build
 curl -s localhost:8000/health
@@ -610,7 +624,7 @@ Dockerfile, docker-compose.yml, Makefile, pyproject.toml, .env.example
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). (Update the copyright holder placeholder to your name.)
+MIT — see [`LICENSE`](LICENSE).
 
 *Built as a demonstration of API design, async job processing, and a testable,
 provider-abstracted architecture — not as a tool to scrape LinkedIn at scale.*

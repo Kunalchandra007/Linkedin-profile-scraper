@@ -9,7 +9,7 @@ description = "Hosted HTTPS API returning structured JSON for a LinkedIn profile
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Portfolio Project" }]
+authors = [{ name = "Kunal Chandra" }]
 keywords = ["fastapi", "scraping", "linkedin", "api", "playwright"]
 
 dependencies = [
