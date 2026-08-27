@@ -1,0 +1,1513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LinkedIn Profile API \u2014 response schemas",
+  "description": "Locked response contract. `ProfileResult` is the core object returned under `data`; `EnqueueResponse`/`JobResponse` are the endpoint envelopes.",
+  "$defs": {
+    "ProfileResult": {
+      "$defs": {
+        "Certification": {
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "issuer": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issuer"
+            },
+            "issue_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issue Date"
+            },
+            "expiration_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expiration Date"
+            },
+            "credential_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Id"
+            },
+            "credential_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Url"
+            }
+          },
+          "title": "Certification",
+          "type": "object"
+        },
+        "Education": {
+          "properties": {
+            "school": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "School"
+            },
+            "degree": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Degree"
+            },
+            "field_of_study": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Field Of Study"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Description"
+            }
+          },
+          "title": "Education",
+          "type": "object"
+        },
+        "Experience": {
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Job title / role",
+              "title": "Title"
+            },
+            "company": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Employer name",
+              "title": "Company"
+            },
+            "employment_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Full-time, Contract, etc.",
+              "title": "Employment Type"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role location, if shown",
+              "title": "Location"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text start, e.g. 'Jan 2021'",
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text end, or null if current",
+              "title": "End Date"
+            },
+            "is_current": {
+              "default": false,
+              "description": "True if this is a current role",
+              "title": "Is Current",
+              "type": "boolean"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role description / bullets",
+              "title": "Description"
+            }
+          },
+          "title": "Experience",
+          "type": "object"
+        },
+        "Language": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "proficiency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "e.g. 'Native or bilingual'",
+              "title": "Proficiency"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Language",
+          "type": "object"
+        },
+        "Profile": {
+          "description": "The extracted profile. Unavailable fields are ``null`` (scalars) or an\nempty list (sections) \u2014 never missing \u2014 so clients can rely on the shape.",
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "headline": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Headline"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Location"
+            },
+            "about": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "About"
+            },
+            "profile_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Photo Url"
+            },
+            "banner_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Banner Photo Url"
+            },
+            "experience": {
+              "items": {
+                "$ref": "#/$defs/Experience"
+              },
+              "title": "Experience",
+              "type": "array"
+            },
+            "education": {
+              "items": {
+                "$ref": "#/$defs/Education"
+              },
+              "title": "Education",
+              "type": "array"
+            },
+            "skills": {
+              "items": {
+                "$ref": "#/$defs/Skill"
+              },
+              "title": "Skills",
+              "type": "array"
+            },
+            "certifications": {
+              "items": {
+                "$ref": "#/$defs/Certification"
+              },
+              "title": "Certifications",
+              "type": "array"
+            },
+            "languages": {
+              "items": {
+                "$ref": "#/$defs/Language"
+              },
+              "title": "Languages",
+              "type": "array"
+            }
+          },
+          "title": "Profile",
+          "type": "object"
+        },
+        "Skill": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "endorsement_count": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Endorsements, if visible",
+              "title": "Endorsement Count"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Skill",
+          "type": "object"
+        }
+      },
+      "description": "A completed scrape/lookup result. This is the object stored in the cache\nand returned under `data` when a job is done.",
+      "properties": {
+        "url": {
+          "description": "Canonical profile URL this result is for",
+          "title": "Url",
+          "type": "string"
+        },
+        "source": {
+          "description": "Which provider produced it: mock | fixture | linkedin",
+          "title": "Source",
+          "type": "string"
+        },
+        "scraped_at": {
+          "description": "UTC timestamp the data was obtained",
+          "format": "date-time",
+          "title": "Scraped At",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "warnings": {
+          "description": "Non-fatal issues, e.g. a section was restricted or truncated",
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "url",
+        "source",
+        "scraped_at",
+        "profile"
+      ],
+      "title": "ProfileResult",
+      "type": "object"
+    },
+    "EnqueueResponse": {
+      "$defs": {
+        "Certification": {
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "issuer": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issuer"
+            },
+            "issue_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issue Date"
+            },
+            "expiration_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expiration Date"
+            },
+            "credential_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Id"
+            },
+            "credential_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Url"
+            }
+          },
+          "title": "Certification",
+          "type": "object"
+        },
+        "Education": {
+          "properties": {
+            "school": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "School"
+            },
+            "degree": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Degree"
+            },
+            "field_of_study": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Field Of Study"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Description"
+            }
+          },
+          "title": "Education",
+          "type": "object"
+        },
+        "Experience": {
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Job title / role",
+              "title": "Title"
+            },
+            "company": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Employer name",
+              "title": "Company"
+            },
+            "employment_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Full-time, Contract, etc.",
+              "title": "Employment Type"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role location, if shown",
+              "title": "Location"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text start, e.g. 'Jan 2021'",
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text end, or null if current",
+              "title": "End Date"
+            },
+            "is_current": {
+              "default": false,
+              "description": "True if this is a current role",
+              "title": "Is Current",
+              "type": "boolean"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role description / bullets",
+              "title": "Description"
+            }
+          },
+          "title": "Experience",
+          "type": "object"
+        },
+        "JobStatus": {
+          "enum": [
+            "queued",
+            "running",
+            "done",
+            "error"
+          ],
+          "title": "JobStatus",
+          "type": "string"
+        },
+        "Language": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "proficiency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "e.g. 'Native or bilingual'",
+              "title": "Proficiency"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Language",
+          "type": "object"
+        },
+        "Profile": {
+          "description": "The extracted profile. Unavailable fields are ``null`` (scalars) or an\nempty list (sections) \u2014 never missing \u2014 so clients can rely on the shape.",
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "headline": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Headline"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Location"
+            },
+            "about": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "About"
+            },
+            "profile_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Photo Url"
+            },
+            "banner_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Banner Photo Url"
+            },
+            "experience": {
+              "items": {
+                "$ref": "#/$defs/Experience"
+              },
+              "title": "Experience",
+              "type": "array"
+            },
+            "education": {
+              "items": {
+                "$ref": "#/$defs/Education"
+              },
+              "title": "Education",
+              "type": "array"
+            },
+            "skills": {
+              "items": {
+                "$ref": "#/$defs/Skill"
+              },
+              "title": "Skills",
+              "type": "array"
+            },
+            "certifications": {
+              "items": {
+                "$ref": "#/$defs/Certification"
+              },
+              "title": "Certifications",
+              "type": "array"
+            },
+            "languages": {
+              "items": {
+                "$ref": "#/$defs/Language"
+              },
+              "title": "Languages",
+              "type": "array"
+            }
+          },
+          "title": "Profile",
+          "type": "object"
+        },
+        "ProfileResult": {
+          "description": "A completed scrape/lookup result. This is the object stored in the cache\nand returned under `data` when a job is done.",
+          "properties": {
+            "url": {
+              "description": "Canonical profile URL this result is for",
+              "title": "Url",
+              "type": "string"
+            },
+            "source": {
+              "description": "Which provider produced it: mock | fixture | linkedin",
+              "title": "Source",
+              "type": "string"
+            },
+            "scraped_at": {
+              "description": "UTC timestamp the data was obtained",
+              "format": "date-time",
+              "title": "Scraped At",
+              "type": "string"
+            },
+            "profile": {
+              "$ref": "#/$defs/Profile"
+            },
+            "warnings": {
+              "description": "Non-fatal issues, e.g. a section was restricted or truncated",
+              "items": {
+                "type": "string"
+              },
+              "title": "Warnings",
+              "type": "array"
+            }
+          },
+          "required": [
+            "url",
+            "source",
+            "scraped_at",
+            "profile"
+          ],
+          "title": "ProfileResult",
+          "type": "object"
+        },
+        "Skill": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "endorsement_count": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Endorsements, if visible",
+              "title": "Endorsement Count"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Skill",
+          "type": "object"
+        }
+      },
+      "description": "Returned by POST /api/v1/profile. On a cache hit `cached` is true,\n`status` is `done`, and `data` is populated immediately (HTTP 200).\nOn a miss the job is queued (HTTP 202).",
+      "properties": {
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/JobStatus"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "cached": {
+          "default": false,
+          "title": "Cached",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProfileResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "job_id",
+        "status",
+        "url"
+      ],
+      "title": "EnqueueResponse",
+      "type": "object"
+    },
+    "JobResponse": {
+      "$defs": {
+        "Certification": {
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "issuer": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issuer"
+            },
+            "issue_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Issue Date"
+            },
+            "expiration_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expiration Date"
+            },
+            "credential_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Id"
+            },
+            "credential_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Credential Url"
+            }
+          },
+          "title": "Certification",
+          "type": "object"
+        },
+        "Education": {
+          "properties": {
+            "school": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "School"
+            },
+            "degree": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Degree"
+            },
+            "field_of_study": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Field Of Study"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Description"
+            }
+          },
+          "title": "Education",
+          "type": "object"
+        },
+        "Experience": {
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Job title / role",
+              "title": "Title"
+            },
+            "company": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Employer name",
+              "title": "Company"
+            },
+            "employment_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Full-time, Contract, etc.",
+              "title": "Employment Type"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role location, if shown",
+              "title": "Location"
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text start, e.g. 'Jan 2021'",
+              "title": "Start Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Free-text end, or null if current",
+              "title": "End Date"
+            },
+            "is_current": {
+              "default": false,
+              "description": "True if this is a current role",
+              "title": "Is Current",
+              "type": "boolean"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Role description / bullets",
+              "title": "Description"
+            }
+          },
+          "title": "Experience",
+          "type": "object"
+        },
+        "JobStatus": {
+          "enum": [
+            "queued",
+            "running",
+            "done",
+            "error"
+          ],
+          "title": "JobStatus",
+          "type": "string"
+        },
+        "Language": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "proficiency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "e.g. 'Native or bilingual'",
+              "title": "Proficiency"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Language",
+          "type": "object"
+        },
+        "Profile": {
+          "description": "The extracted profile. Unavailable fields are ``null`` (scalars) or an\nempty list (sections) \u2014 never missing \u2014 so clients can rely on the shape.",
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "headline": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Headline"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Location"
+            },
+            "about": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "About"
+            },
+            "profile_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Photo Url"
+            },
+            "banner_photo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Banner Photo Url"
+            },
+            "experience": {
+              "items": {
+                "$ref": "#/$defs/Experience"
+              },
+              "title": "Experience",
+              "type": "array"
+            },
+            "education": {
+              "items": {
+                "$ref": "#/$defs/Education"
+              },
+              "title": "Education",
+              "type": "array"
+            },
+            "skills": {
+              "items": {
+                "$ref": "#/$defs/Skill"
+              },
+              "title": "Skills",
+              "type": "array"
+            },
+            "certifications": {
+              "items": {
+                "$ref": "#/$defs/Certification"
+              },
+              "title": "Certifications",
+              "type": "array"
+            },
+            "languages": {
+              "items": {
+                "$ref": "#/$defs/Language"
+              },
+              "title": "Languages",
+              "type": "array"
+            }
+          },
+          "title": "Profile",
+          "type": "object"
+        },
+        "ProfileResult": {
+          "description": "A completed scrape/lookup result. This is the object stored in the cache\nand returned under `data` when a job is done.",
+          "properties": {
+            "url": {
+              "description": "Canonical profile URL this result is for",
+              "title": "Url",
+              "type": "string"
+            },
+            "source": {
+              "description": "Which provider produced it: mock | fixture | linkedin",
+              "title": "Source",
+              "type": "string"
+            },
+            "scraped_at": {
+              "description": "UTC timestamp the data was obtained",
+              "format": "date-time",
+              "title": "Scraped At",
+              "type": "string"
+            },
+            "profile": {
+              "$ref": "#/$defs/Profile"
+            },
+            "warnings": {
+              "description": "Non-fatal issues, e.g. a section was restricted or truncated",
+              "items": {
+                "type": "string"
+              },
+              "title": "Warnings",
+              "type": "array"
+            }
+          },
+          "required": [
+            "url",
+            "source",
+            "scraped_at",
+            "profile"
+          ],
+          "title": "ProfileResult",
+          "type": "object"
+        },
+        "Skill": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "endorsement_count": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Endorsements, if visible",
+              "title": "Endorsement Count"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "Skill",
+          "type": "object"
+        }
+      },
+      "description": "Returned by GET /api/v1/profile/{job_id}.",
+      "properties": {
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/JobStatus"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProfileResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "job_id",
+        "status",
+        "url"
+      ],
+      "title": "JobResponse",
+      "type": "object"
+    }
+  }
+}

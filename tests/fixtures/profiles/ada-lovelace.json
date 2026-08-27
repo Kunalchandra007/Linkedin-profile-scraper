@@ -1,0 +1,54 @@
+{
+  "url": "https://www.linkedin.com/in/ada-lovelace",
+  "source": "fixture",
+  "scraped_at": "2024-01-01T00:00:00+00:00",
+  "profile": {
+    "name": "Ada Lovelace",
+    "headline": "Mathematician · Writer of the first published algorithm",
+    "location": "London, England, United Kingdom",
+    "about": "Known for work on Charles Babbage's Analytical Engine. Canned fixture data for tests.",
+    "profile_photo_url": "https://example.com/ada-avatar.jpg",
+    "banner_photo_url": "https://example.com/ada-banner.jpg",
+    "experience": [
+      {
+        "title": "Collaborator",
+        "company": "Analytical Engine Project",
+        "employment_type": "Full-time",
+        "location": "London, United Kingdom",
+        "start_date": "1842",
+        "end_date": null,
+        "is_current": true,
+        "description": "Annotated Menabrea's memoir; wrote the first algorithm."
+      }
+    ],
+    "education": [
+      {
+        "school": "Private Tutoring",
+        "degree": "Private Study",
+        "field_of_study": "Mathematics",
+        "start_date": "1828",
+        "end_date": "1835",
+        "description": null
+      }
+    ],
+    "skills": [
+      { "name": "Mathematics", "endorsement_count": 99 },
+      { "name": "Algorithms", "endorsement_count": 42 }
+    ],
+    "certifications": [
+      {
+        "name": "Fellow of the Analytical Society",
+        "issuer": "Analytical Society",
+        "issue_date": "1841",
+        "expiration_date": null,
+        "credential_id": null,
+        "credential_url": "https://example.com/credential/ada"
+      }
+    ],
+    "languages": [
+      { "name": "English", "proficiency": "Native or bilingual" },
+      { "name": "French", "proficiency": "Professional working" }
+    ]
+  },
+  "warnings": ["Canned fixture data for tests."]
+}

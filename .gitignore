@@ -1,0 +1,42 @@
+# ─── Secrets & authenticated session (NEVER commit) ───
+.env
+.env.*
+!.env.example
+session/
+*.session
+*.storage-state.json
+
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.mypy_cache/
+
+# ─── Databases / runtime data ───
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# ─── Tooling ───
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ─── Playwright ───
+playwright-report/
+.playwright/
+ms-playwright/
+
+# ─── OS / editor ───
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

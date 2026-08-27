@@ -1,0 +1,43 @@
+# docker-compose for local runs. Defaults to the CORE app (mock/fixture provider),
+# which needs no browser and carries no ToS risk.
+#
+# Bring it up:   docker compose up --build
+# Then:          curl -s localhost:8000/health | jq
+#
+# To build the optional LinkedIn scraper variant instead, set INSTALL_SCRAPER=1
+# in the build args below and PROVIDER=linkedin in your .env (see README ToS notes).
+
+services:
+  api:
+    build:
+      context: .
+      args:
+        INSTALL_SCRAPER: "0"
+    image: linkedin-profile-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Non-secret defaults; secrets (API_KEY, LI_*) come from .env below.
+      PROVIDER: ${PROVIDER:-mock}
+      DATABASE_URL: sqlite:///./data/profiles.db
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-604800}
+      RUN_INLINE_WORKER: "true"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    env_file:
+      # Optional: secrets (API_KEY, LI_*) come from here when present. A fresh
+      # clone has no .env (it's gitignored), so don't hard-fail without one.
+      - path: .env
+        required: false
+    volumes:
+      # Persist the SQLite DB across restarts.
+      - profiles-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  profiles-data:

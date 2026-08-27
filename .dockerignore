@@ -1,0 +1,30 @@
+.git
+.gitignore
+.venv
+venv
+env
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.coverage
+htmlcov
+
+# Secrets & runtime state must never enter the image
+.env
+.env.*
+!.env.example
+session/
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Not needed at runtime. NOTE: keep tests/fixtures/ in the build context — the
+# Dockerfile copies it so the `fixture` provider works in the image. So exclude
+# the test *code*, not the whole tests/ tree.
+tests/test_*.py
+tests/conftest.py
+playwright-report/
+.playwright/
